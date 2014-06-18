@@ -40,7 +40,6 @@ module.exports = function (grunt) {
         frameworks: ['mocha', 'chai', 'sinon-chai', 'chai-as-promised'],
         files: [
           './support/angular/angular.js',
-          './support/angular-mocks/angular-mocks.js',
           '<%= pkg.main %>',
           './test/**/*.js'
         ],
