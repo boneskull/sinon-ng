@@ -2,13 +2,24 @@
   'use strict';
 
   var injector = angular.injector(['ng']),
+      $timeout = injector.get('$timeout'),
       $q = injector.get('$q');
 
   var proto = {
     fulfills: function fulfills(value) {
+      this.func = function () {
+        return $timeout(function () {
+          return value;
+        });
+      };
       return this.returns($q.when(value));
     },
     rejects: function rejects(value) {
+      this.func = function () {
+        return $timeout(function () {
+          throw value;
+        });
+      };
       return this.returns($q.reject(value));
     }
   };

@@ -1,11 +1,13 @@
-(function (sinon, angular) {
+(function (sinon) {
   'use strict';
 
   describe('sinon-ng', function () {
     describe('fulfills()', function () {
+
       it('should exist', function () {
         expect(sinon.stub().fulfills).to.be.a('function');
       });
+
       it('should return a promise, resolved with the value', function () {
         var foo = {
           bar: function () {
@@ -18,6 +20,15 @@
             expect(stub).to.have.been.calledOnce;
           });
       });
+
+      it('should work on bare stub', function () {
+        var stub = sinon.stub().fulfills('baz');
+        return expect(stub()).to.eventually.equal('baz')
+          .then(function () {
+            expect(stub).to.have.been.calledOnce;
+          });
+      });
+
       it('should work with the call api', function () {
         var foo = {
           bar: function () {
@@ -31,10 +42,13 @@
         });
       });
     });
+
     describe('rejects', function () {
+
       it('should exist', function () {
         expect(sinon.stub().rejects).to.be.a('function');
       });
+
       it('should return a promise, rejected with the value', function () {
         var foo = {
           bar: function () {
@@ -46,6 +60,15 @@
             expect(stub).to.have.been.calledOnce;
           });
       });
+
+      it('should work on a bare stub', function () {
+        var stub = sinon.stub().rejects('baz');
+        return expect(stub()).to.eventually.be.rejectedWith('baz')
+          .then(function () {
+            expect(stub).to.have.been.calledOnce;
+          });
+      });
+      
       it('should work with the call api', function () {
         var foo = {
           bar: function () {
@@ -59,6 +82,8 @@
         });
       });
     });
+
+    //TODO: add tests against angular-debaser
   });
 
-})(window.sinon, window.angular);
+})(window.sinon);
