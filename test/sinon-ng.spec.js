@@ -41,6 +41,21 @@
           return expect(foo.bar()).to.eventually.equal('quux');
         });
       });
+
+      it('should accept args', function () {
+        var foo = {
+          bar: function () {
+          }
+        };
+
+        var stub = sinon.stub(foo, 'bar').fulfills('baz');
+        return expect(foo.bar('derp')).to.eventually.equal('baz')
+          .then(function () {
+            expect(stub).to.have.been.calledOnce;
+            expect(stub).to.have.been.calledWith('derp');
+          });
+
+      });
     });
 
     describe('rejects', function () {
@@ -80,6 +95,22 @@
         return expect(foo.bar()).to.eventually.be.rejectedWith('baz').then(function () {
           return expect(foo.bar()).to.eventually.be.rejectedWith('quux');
         });
+      });
+
+
+      it('should accept args', function () {
+        var foo = {
+          bar: function () {
+          }
+        };
+
+        var stub = sinon.stub(foo, 'bar').rejects('baz');
+        return expect(foo.bar('derp')).to.eventually.be.rejectedWith('baz')
+          .then(function () {
+            expect(stub).to.have.been.calledOnce;
+            expect(stub).to.have.been.calledWith('derp');
+          });
+
       });
     });
 

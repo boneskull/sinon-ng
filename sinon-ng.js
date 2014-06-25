@@ -17,7 +17,7 @@
     rejects: function rejects(value) {
       this.func = function () {
         return $timeout(function () {
-          throw value;
+          return $q.reject(value);
         });
       };
       return this.returns($q.reject(value));
