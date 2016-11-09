@@ -20,7 +20,7 @@
     "karma-chrome-launcher": "^0.1.4",
     "karma-mocha": "^0.1.4",
     "karma-phantomjs-launcher": "^0.1.4",
-    "karma-story-reporter": "^0.2.2",
+    "karma-story-reporter": "^0.3.1",
     "load-grunt-tasks": "^0.5.0",
     "mocha": "^2.4.5",
     "time-grunt": "^0.3.2"
