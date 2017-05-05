@@ -6,7 +6,7 @@ Not much here at the moment, but if you don't care to setup mocks for `$http` ca
 
 ## API
 
-These examples leverage [Mocha](http://visionmedia.github.io/mocha/), [Chai](http://chaijs.com/), and [Chai as Promised](https://github.com/domenic/chai-as-promised/).
+These examples leverage [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), and [Chai as Promised](https://github.com/domenic/chai-as-promised/).
 
 ### `fulfills()`
 
